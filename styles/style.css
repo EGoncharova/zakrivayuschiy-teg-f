@@ -17,4 +17,11 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  /* background: url(../images/dark-pattern.png),  linear-gradient(180deg, #007F0C 0%, #004306 100%); */
+  background: url(../images/light-pattern.png), linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%);
+  /* background-size: cover; */
+  background-position: fixed;
 }
