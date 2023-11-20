@@ -18,10 +18,16 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--font-main);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   color: var(--text-color);
-  /* background: url(../images/dark-pattern.png),  linear-gradient(180deg, #007F0C 0%, #004306 100%); */
-  background: url(../images/light-pattern.png), linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%);
-  /* background-size: cover; */
-  background-position: fixed;
+  /* бекграунд состоит из 3х элементов, они перечисляются через ",". 
+  repeating-linear-gradient повторяет градиент бесконечно, пока не заполнит элемент.
+  его параметры: 90deg - дегри - это градусы угла, при 90 градусах полоски получатся вертикальными.
+  Дальше через запятую указываются пары  #000 0пикс (цвет-положение). Если цифры положения у соседжних 
+  пар с разными цветами совпадают, то плавного перехода цвета не будет, а будут четкие полоски */
+   background: var(--background-image), 
+              repeating-linear-gradient(90deg,  var(--gradient-lines-color) 0, var(--gradient-lines-color) 2px, transparent 2px, transparent 4px),
+              linear-gradient(180deg, var(--gradient-color-start) 0%, var(--gradient-color-end) 100%);
+  background-size: auto, cover;
+  background-attachment: fixed;
 }

@@ -10,6 +10,9 @@
     --background-color: #ffffff;
     --text-color: #000000;
     --background-image: url('../images/background-light.png');
+    --gradient-lines-color: #d3d3d3;
+    --gradient-color-start: #E7E7E7;
+    --gradient-color-end: #1A1A1A;
 }
 
 :root.theme-dark {
@@ -18,6 +21,9 @@
     --background-color: #000000;
     --text-color: #00CC14;
     --background-image: url('../images/background-dark.png');
+    --gradient-lines-color: #000;
+    --gradient-color-start: #007f0c;
+    --gradient-color-end: #004306;
 }
 /* этот медиа-запрос указывает установки переменных для установленной в БРАУЗЕРЕ пользователя (не в нашем, а в браузере нашего посетителя) светлой теме */
 @media (prefers-color-scheme: light) {
