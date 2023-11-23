@@ -14,6 +14,9 @@
   </head>
   <body class="page">
     <header class="header">
+      <!--&lt;- спец символ, заменяет треугольные скобки -->
+      <p class="logo">&lt;/HTML&gt;</p>
+      <h1 class="header__title">закрывающий тег</h1>
       <nav class="theme-menu header__theme-menu">
         <!-- Не меняйте разметку этого списка, иначе скрипты перестанут работать -->
         <ul class="theme-menu__list">
@@ -40,7 +43,26 @@
         </ul>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <article class="card">
+        <h2 class="card__title">
+          Фритрек и нулевой спринт: Подготовка к работе
+        </h2>
+        <div class="card__container-image">
+          <img src="./images/image.png" alt="машинка" class="card__image"/>
+          <span class="card__lable">&lt;/HTML&gt;</span>
+        </div>
+        <p class="card__text">
+          Это было самое начало пути. На этом этапе важно было проникнуться основами и настроиться на учёбу. И, возможно, подумать, как новые знания могут повлиять на ваше будущее.
+        </p>    
+        <p class="card__text">
+          Место для ваших воспоминаний о начале обучения.
+        </p>
+      </article>
+      <button class="card__like-button">        
+        <img src="" alt="" class="card__icon-button"><span class="button__text">like</span>
+      </button>
+    </main>
     <script src="./scripts/like.js"></script>
   </body>
 </html>

@@ -17,7 +17,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--font-main);
+  font-family: sans-serif;
   /* background-color: var(--background-color); */
   color: var(--text-color);
   /* бекграунд состоит из 3х элементов, они перечисляются через ",". 
@@ -25,9 +25,119 @@
   его параметры: 90deg - дегри - это градусы угла, при 90 градусах полоски получатся вертикальными.
   Дальше через запятую указываются пары  #000 0пикс (цвет-положение). Если цифры положения у соседжних 
   пар с разными цветами совпадают, то плавного перехода цвета не будет, а будут четкие полоски */
-   background: var(--background-image), 
-              repeating-linear-gradient(90deg,  var(--gradient-lines-color) 0, var(--gradient-lines-color) 2px, transparent 2px, transparent 4px),
-              linear-gradient(180deg, var(--gradient-color-start) 0%, var(--gradient-color-end) 100%);
+  background: var(--background-image),
+    repeating-linear-gradient(
+      90deg,
+      var(--gradient-lines-color) 0,
+      var(--gradient-lines-color) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(
+      180deg,
+      var(--gradient-color-start) 0%,
+      var(--gradient-color-end) 100%
+    );
   background-size: auto, cover;
   background-attachment: fixed;
+}
+
+@supports (font-variation-settings: normal) {
+  .page {
+    font-family: var(--font-main), sans-serif;
+  }
+}
+
+.header {
+  background-color: var(--background-color);
+  border: 2px solid var(--text-color);
+
+  /* функция clamp позвоялет задать ограничения вариаций относительного размера.
+  относительный размер (50%) - это средняя цифра в параметрах.
+  левая цифра - это минимум, ниже которого опускаться нельзя.
+  правая цифра - это максимум, выше котоорого нельзя */
+  width: clamp(370px, 50%, 696px);
+  margin: 102px auto 107px;
+  padding: 136px 0 25px;
+}
+.logo {
+  text-align: center;
+  /*  разрешение использовать ближайший системный шрифт (это тот шрифт, который указывается при описании 
+    объекта в font-famil после запятой - sans-serif, serif, monospace) вместо указанного, пока тот подгружается */
+  font-family: var(--font-accent), sans-serif;
+  font-size: 65px;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.header__title {
+  font-family: var(--font-accent), sans-serif;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.theme-menu {
+  display: flex;
+  justify-content: center;
+}
+.theme-menu__button {
+  background: none;
+  font-family: inherit;
+  border: none;
+  position: relative;
+}
+.theme-menu__button:hover {
+  cursor: pointer;
+}
+.theme-menu__button:disabled {
+  opacity: 0.6;
+}
+.theme-menu__button:disabled::before {
+  content: "▶";
+  display: inline-block;
+  font-family: var(--font-accent);
+  position: absolute;
+  left: -15px;
+}
+.card {
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  width: clamp(370px, 50%, 696px);
+  margin: 0 auto 54px;
+  background-color: var(--background-color);
+}
+.card__title{
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0 10px 8px;
+}
+.card__text{
+  margin: 25px;
+  font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px;
+}
+.card__container-image{
+  position: relative;
+  border-top: 2px solid currentColor;
+
+
+}
+.card__image{
+  width: 100%;
+  
+
+}
+.card__lable{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
