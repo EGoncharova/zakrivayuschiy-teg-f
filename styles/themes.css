@@ -9,7 +9,8 @@
     --font-accent-weight: 700;
     --background-color: #ffffff;
     --text-color: #000000;
-    --background-image: url('../images/background-light.png');
+    --text-button-color: white;
+    --background-image: url('../images/light-pattern.png');
     --gradient-lines-color: #d3d3d3;
     --gradient-color-start: #E7E7E7;
     --gradient-color-end: #1A1A1A;
@@ -20,7 +21,8 @@
     --font-accent-weight: 785;
     --background-color: #000000;
     --text-color: #00CC14;
-    --background-image: url('../images/background-dark.png');
+    --text-button-color: #00CC14;
+    --background-image: url('../images/dark-pattern.png');
     --gradient-lines-color: #000;
     --gradient-color-start: #007f0c;
     --gradient-color-end: #004306;
@@ -32,6 +34,6 @@
         --font-accent-weight: 700;
         --background-color: #ffffff;
         --text-color: #000000;
-      --background-image: url('../images/background-light.png');
+      --background-image: url('../images/light-pattern.png');
     }
 }

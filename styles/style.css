@@ -3,12 +3,14 @@
 Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
 ✦ theme-dark — класс тёмной темы
 ✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
+
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ like-icon — для svg-иконки анимированного сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
+
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
@@ -65,17 +67,17 @@
   /*  разрешение использовать ближайший системный шрифт (это тот шрифт, который указывается при описании 
     объекта в font-famil после запятой - sans-serif, serif, monospace) вместо указанного, пока тот подгружается */
   font-family: var(--font-accent), sans-serif;
-  font-size: 65px;
-  font-weight: 400;
+  font-size: clamp(49px, 4.5vw, 65px);
+  font-weight: var(--font-main-weight);
   line-height: normal;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
 .header__title {
   font-family: var(--font-accent), sans-serif;
-  font-size: 23px;
+  font-size: clamp(14px, 2vw, 23px);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--font-main-weight);
   line-height: normal;
   text-transform: uppercase;
   text-align: center;
@@ -84,18 +86,44 @@
 .theme-menu {
   display: flex;
   justify-content: center;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight:var(--font-main-weight);
+  line-height: normal;
+
+  
+}
+.theme-menu__list{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 .theme-menu__button {
   background: none;
   font-family: inherit;
+  text-transform: uppercase;
   border: none;
   position: relative;
+  /* transition  отвечает за скорость изменения свойств.
+  каких свойств - указано в значении transition, здесь это - опасити.
+  Далее указывается время смены значения свойства.
+  И далее - временная функция - это ускорения-замедления перехода, описываемые функциями Безье.
+  cubic-bezier можно настролиь в браузере.
+  ease - это константа, обозначающая одну из вариаций cubic-bezier
+  */
+  transition: opacity 0.3s ease;
+}
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
 }
 .theme-menu__button:hover {
   cursor: pointer;
 }
 .theme-menu__button:disabled {
   opacity: 0.6;
+  pointer-events: none;
 }
 .theme-menu__button:disabled::before {
   content: "▶";
@@ -103,7 +131,41 @@
   font-family: var(--font-accent);
   position: absolute;
   left: -15px;
+  animation: arrow 0.5s ease-in-out infinite alternate;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; 
+  анимации сложнее, чем транзишн - ей надо обязательно описывать список кадров @keyframes.
+  @keyframes привязывается к конкретной анимации через свойство name, у нас name=arrow
+  внутри директивы @keyframes кадры описываются по селектору %% (%% от времени duration).
+  timing-function - то же самое, что в транзишн, кубик-Безье
+  delay - это временная задержка перед стартом анимации
+  iteration-count - сколько раз повторяется цикл анимации (1, 2, 5...). Если анимация должна крутиться постоянно, 
+  то пишем infinite
+  direction - направление анимации (вперед, назад и вперед-назад), вперед-назад=alternate
+  */
 }
+@keyframes arrow {
+  0% {left: -15px;}
+  100% {left: -11px;}
+}
+
+/* .theme-menu__button::after - это правило отрисовывает линию.
+лингия получается, потому что: display: block делает элемент как бы дивом.
+его ширина будет = родителю, т.е. баттону, а выоту задаем, как высоту блока = 1пикс 
+и, чтобы линия была видна, надо задать цвет background-color
+*/
+.theme-menu__button::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: currentColor;
+  scale: 0;
+  transform-origin: 0;
+  transition: scale 0.3s ease;
+}
+.theme-menu__button:focus-visible:after {
+  scale: 1;
+}
+/* ========================================================= */
 .card {
   border: 2px solid var(--text-color);
   color: var(--text-color);
@@ -114,25 +176,27 @@
 .card__title{
 font-size: 18px;
 font-style: normal;
-font-weight: 700;
+font-weight: var(--font-accent-weight);
 line-height: normal;
 margin: 0 10px 8px;
 }
 .card__text{
   margin: 25px;
   font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 21px;
+  font-style: normal;
+  font-weight: var(--font-main-weight);
+  line-height: 21px;
 }
 .card__container-image{
   position: relative;
   border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
 
 
 }
 .card__image{
   width: 100%;
+  display: block;
   
 
 }
@@ -140,4 +204,124 @@ line-height: 21px;
   position: absolute;
   top: 10px;
   right: 10px;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: var(--font-main-weight);
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-color);
+  /* тень рисуется с 4х строн, начиная с верхней и по часовой стрелке. Каждая сторона описывается 3мя параметрами 
+  - сдвиг по вертикали, сдвиг по гор, цвет. стороны отделяются запятой.
+  Движени вверх - это в отриц сторону. (ось У идет вниз)
+  Движ влево - в отриц сторону (ось Х как обычно) */
+  text-shadow: -1px 0 var(--background-color), 
+                0 1px var(--background-color),
+                1px 0 var(--background-color),
+                0 -1px var(--background-color);
 }
+/* директива supports проверяет возможность применения указанного в кругл скобках свойства.
+Если получается - отрабатывает правило указанное внутри саппорт.
+Если нет - ничего не происходит, и тогда остаются включенными свойства, изначально указанные 
+для даннрого селектора card__lable */ 
+@supports (-webkit-text-stroke: 1px var(--background-color)) {
+  .card__lable {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--background-color);
+  } 
+}
+
+.card__buttons{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin: 25px;
+}
+.button__text{
+  position: relative;
+  z-index: 3;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: var(--font-main-weight);
+  line-height: 90%;
+  /*mix-blend-mode - это режим наложения, то есть как вммешивается цвет элемента с ниже лежащим цветом. А режим difference здесь белое на белом даст черный, а зеленый на зеленом даст зеленый*/
+  color: var(--text-button-color);
+  mix-blend-mode: difference;
+}
+.card__like-button{
+  position: relative;
+  padding: 9px 17px;
+  border: 2px solid currentColor;
+  background-color: transparent;
+  width: 117px;
+}
+.card__icon-button{
+  border: 2px solid transparent;
+  background-color: transparent;
+  padding: 4px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+.card__icon-button:focus{
+  outline: none;
+
+}
+.card__icon-button:focus-visible{
+  border: 2px solid currentColor;
+}
+
+/* =================================== */
+.footer__button {
+  position: relative;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding:15px 20px;
+  border: 2px solid currentColor;
+  width: 335px;
+  margin: 55px auto;
+}
+.save-icon {
+  width: 21px;
+  position: relative;
+  z-index: 3;
+  /*у текста - color, у svg - fill*/
+  fill: var(--text-button-color);
+  mix-blend-mode: difference;
+}
+.footer__button:focus,.card__like-button:focus{
+  outline: none;
+}
+
+.footer__button:focus-visible,.card__like-button:focus-visible{
+  box-shadow: 2px 2px 0px 0px currentColor;
+  transition: box-shadow 0.3s ease;
+}
+
+.footer__button::after,.card__like-button::after{
+  content:'';
+  display: block;
+  position: absolute;
+  /* инсет заменяет top=0 right = 0 bottom = 0 left = 0 и растягивает элемент на 100% wifth / heigthж если все "0", то он принимает величину родителя, здесь это сам button*/
+  inset: 0 0 0 0;
+  /*масштабирует объект / 0 - размер становится нулевм, то есть мы его умножаем на 0, а если на 1 - то размер становится натуральным. Если от 0 до 1, то это уменьшение, а если больше 1 - то это увеличение*/
+  scale: 0 1;
+  /*точка отсчета всех трансормаций, а scale  - это одна из них*/
+  transform-origin: 0;
+  background-color: var(--text-color);
+  transition: scale 0.5s ease-in-out;
+}
+.footer__button:hover::after,.card__like-button:hover:after{
+scale: 1 1;
+
+}
+@media screen and (max-width: 375px) {
+  .header, .card {width: 100%;}
+}
+
