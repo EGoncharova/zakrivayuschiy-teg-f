@@ -145,8 +145,12 @@
 }
 @keyframes arrow {
   
-  0% {left: -15px;}
-  100% {left: -11px;}
+  0% {
+    left: -15px;
+  }
+  100% {
+    left: -11px;
+  }
 }
 
 /* .theme-menu__button::after - это правило отрисовывает линию.
@@ -469,6 +473,8 @@ text-align: center;
 }
 /* -------------------------------------- */
 @media screen and (max-width: 375px) {
-  .header, .card {width: 100%;}
+  .header, .card {
+    width: 100%;
+  }
 }
 
