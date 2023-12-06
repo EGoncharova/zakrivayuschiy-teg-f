@@ -94,7 +94,7 @@
 
   
 }
-.theme-menu__list{
+.theme-menu__list {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -144,6 +144,7 @@
   */
 }
 @keyframes arrow {
+  
   0% {left: -15px;}
   100% {left: -11px;}
 }
@@ -173,33 +174,33 @@
   margin: 0 auto 54px;
   background-color: var(--background-color);
 }
-.card__title{
+.card__title {
 font-size: 18px;
 font-style: normal;
 font-weight: var(--font-accent-weight);
 line-height: normal;
 margin: 0 10px 8px;
 }
-.card__text{
+.card__text {
   margin: 25px;
   font-size: 18px;
   font-style: normal;
   font-weight: var(--font-main-weight);
   line-height: 21px;
 }
-.card__container-image{
+.card__container-image { 
   position: relative;
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
 
 
 }
-.card__image{
+.card__image {
   width: 100%;
   display: block;
  
 }
-.card:nth-child(1) .card__image{
+.card:nth-child(1) .card__image {
   filter: hue-rotate(120deg);
 }
 .card:nth-child(2) .card__image {
@@ -223,7 +224,7 @@ margin: 0 10px 8px;
 .card:nth-child(8) .card__image {
   filter:brightness(-20);
 }
-.card__lable{
+.card__lable {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -256,14 +257,14 @@ margin: 0 10px 8px;
   } 
 }
 
-.card__buttons{
+.card__buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
   margin: 25px;
 }
-.button__text{
+.button__text {
   position: relative;
   z-index: 3;
   font-family: var(--font-accent);
@@ -275,14 +276,14 @@ margin: 0 10px 8px;
   color: var(--text-button-color);
   mix-blend-mode: difference;
 }
-.card__like-button{
+.card__like-button {
   position: relative;
   padding: 9px 17px;
   border: 2px solid currentColor;
   background-color: transparent;
   width: 117px;
 }
-.card__icon-button{
+.card__icon-button {
   border: 2px solid transparent;
   background-color: transparent;
   padding: 0;
@@ -291,11 +292,11 @@ margin: 0 10px 8px;
 }
 
 
-.card__icon-button:focus{
+.card__icon-button:focus {
   outline: none;
 
 }
-.card__icon-button:focus-visible{
+.card__icon-button:focus-visible {
   border: 2px solid currentColor;
 }
 
@@ -325,16 +326,16 @@ margin: 0 10px 8px;
   fill: var(--text-button-color);
   mix-blend-mode: difference;
 }
-.button:focus{
+.button:focus {
   outline: none;
 }
 
-.button:focus-visible{
+.button:focus-visible {
   box-shadow: 2px 2px 0px 0px currentColor;
   transition: box-shadow 0.3s ease;
 }
 
-.button::after{
+.button::after {
   content:'';
   display: block;
   position: absolute;
@@ -347,7 +348,7 @@ margin: 0 10px 8px;
   background-color: var(--text-color);
   transition: scale 0.5s ease-in-out;
 }
-.button:hover:after{
+.button:hover:after {
 scale: 1 1;
 }
 
@@ -441,7 +442,7 @@ scale: 1 1;
   width: 39px;
   flex-shrink: 0;
 }
-.dialog__text{
+.dialog__text {
 font-family: var(--font-accent);
 font-size: 14px;
 font-style: normal;
@@ -449,7 +450,7 @@ font-weight: var(--font-main-weight);
 line-height: 150%; /* 21px */
 text-transform: uppercase;
 }
-.dialog__button{
+.dialog__button {
 font-family: var(--font-accent);
 font-size: 14px;
 font-style: normal;
