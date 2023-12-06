@@ -193,6 +193,7 @@ margin: 0 10px 8px;
   line-height: 21px;
 }
 .card__container-image { 
+  
   position: relative;
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
@@ -258,6 +259,7 @@ margin: 0 10px 8px;
   .card__lable {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--background-color);
+  
   } 
 }
 
@@ -412,6 +414,7 @@ scale: 1 1;
   animation: heart-pulse 0.3s ease-in 0.1s 1 alternate;
 }
 @keyframes heart-pulse {
+
   0% { 
     scale: 1;
   }
@@ -423,6 +426,7 @@ scale: 1 1;
   animation: sparks 0.3s ease-in 0.3s 1 alternate;
 }
 @keyframes sparks {
+ 
   0% { 
     opacity: 0;
   }
