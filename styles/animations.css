@@ -12,3 +12,77 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+.theme-menu__button:disabled::before {
+    content: "▶";
+    display: inline-block;
+    font-family: var(--font-accent);
+    position: absolute;
+    left: -15px;
+    animation: arrow 0.5s ease-in-out infinite alternate;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; 
+    анимации сложнее, чем транзишн - ей надо обязательно описывать список кадров @keyframes.
+    @keyframes привязывается к конкретной анимации через свойство name, у нас name=arrow
+    внутри директивы @keyframes кадры описываются по селектору %% (%% от времени duration).
+    timing-function - то же самое, что в транзишн, кубик-Безье
+    delay - это временная задержка перед стартом анимации
+    iteration-count - сколько раз повторяется цикл анимации (1, 2, 5...). Если анимация должна крутиться постоянно, 
+    то пишем infinite
+    direction - направление анимации (вперед, назад и вперед-назад), вперед-назад=alternate
+    */
+  }
+  @keyframes arrow {
+    
+    0% {
+      left: -15px;
+    }
+    100% {
+      left: -11px;
+    }
+  }
+
+  /* .theme-menu__button::after - это правило отрисовывает линию.
+лингия получается, потому что: display: block делает элемент как бы дивом.
+его ширина будет = родителю, т.е. баттону, а выоту задаем, как высоту блока = 1пикс 
+и, чтобы линия была видна, надо задать цвет background-color
+*/
+.theme-menu__button::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: currentColor;
+    scale: 0;
+    transform-origin: 0;
+    transition: scale 0.3s ease;
+  }
+  .theme-menu__button:focus-visible:after {
+    scale: 1;
+  }
+
+  .like-icon.is-liked .heart {
+    animation: heart-pulse 0.3s ease-in 0.1s 1 alternate;
+  }
+  @keyframes heart-pulse {
+  
+  
+    0% { 
+      scale: 1;
+    }
+    100% {
+      scale: 1.5;
+    }
+  }
+  .like-icon.is-liked .sparks {
+    animation: sparks 0.3s ease-in 0.3s 1 alternate;
+  }
+  @keyframes sparks {
+   
+    
+    0% { 
+     
+       opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
